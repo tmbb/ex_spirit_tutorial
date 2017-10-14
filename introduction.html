@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.18.1">
+    <title>Introduction – ex_spirit_tutorial v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
+    
+    <script src="dist/sidebar_items-3a2c0b4952.js"></script>
+    
+    <link rel="stylesheet" href="dist/ex_doc_makeup-css.css"/>
+    
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
+<div class="main">
+<button class="sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<section class="sidebar">
+
+  
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+        ex_spirit_tutorial
+      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+    
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+    
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+    
+
+    
+
+    
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Introduction</h1>
+<p>ExSpirit is inspired by the <a href="CppSpirit">C++ Spirit Library</a>.
+Just like Spirit, it tries to do as many compile-time optimizations as possible, s that the parsers run as fast as possible at compile time.
+While this results in faster parsers at runtime, it means ExSpirit parsers are a little slow to compile.</p>
+<p>Due to the way ExSpirit is implemented, it can’s optimize as aggressively as Spirit, and the fact that it runs on the <a href="BEAM">BEAM</a> means it will never be as fast as Spirit.
+Spirit, being written in C++, doesn’t need a runtime system and can optimize all the way down to the CPU instructions.</p>
+<h2 id="features" class="section-heading">
+  <a href="#features" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Features
+</h2>
+
+<p>There are many parsing libraries, some of them Open Source and some implemented in Elixir.</p>
+<p>Many of them are pure <a href="https://en.wikipedia.org/wiki/Parsing_expression_grammar" title="">PEG</a> (<strong>P</strong>arsing <strong>E</strong>xpression <strong>G</strong>rammar) parsing libraries.
+PEG parsers have a limitation, which is that they can only parse <a href="https://en.wikipedia.org/wiki/Context-free_grammar" title="">context-free grammars</a>.
+Put simply, a context-free grammar is a grammar in which the decision on what to do next is based on the remaining symbols and not on the symbols that have already been consumed.
+You can think of it as a parser that can’t use what it has already seen to decide what to do next.</p>
+<p>Many programming languages are specified by context-free grammars.
+Some file formats, such as <a href="https://en.wikipedia.org/wiki/JSON" title="">JSON</a> or <a href="https://en.wikipedia.org/wiki/S-expression" title="">S-Expressions</a> can also be described by context-free languages.
+In this tutorial, we will write both a JSON parser and parser for S-Expressions.</p>
+<p>ExSpirit is a general parser, which means it can parse basically anything that can be described unambiguously, including context-sensitive languages.
+You can think of context-sensitive languages as languages in which the parser can use the symbols it has already seen in order to decide what to do next.</p>
+<p>Basically almost every programming language or file format that is sensitive to indentation is a context-sensitive language.
+Examples of context-sensitive languages are some programming languages (e.g. Haskell, Python), some template languages (<a href="https://pugjs.org/api/getting-started.html" title="">Pug</a> or <a href="http://slim-lang.com/" title="">Slim</a>, both of which have Elixir implementations), and some file formats, such as <a href="https://en.wikipedia.org/wiki/XML" title="">XML</a> and <a href="https://en.wikipedia.org/wiki/XML" title="">YAML</a>.
+<a href="https://en.wikipedia.org/wiki/HTML" title="">HTML</a>, while being based in XML, is in a league of its own, and HTML5, the latest iteration, [can’t even be defined by a meaningful grammar][http://trevorjim.com/a-grammar-for-html5/].
+In this tutorial, we will write an XML parser.</p>
+<h2 id="alternative-approaches" class="section-heading">
+  <a href="#alternative-approaches" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Alternative Approaches
+</h2>
+
+<p>ExSpirit is modeled on the <a href="CppSpirit">C++ Spirit Library</a>.</p>
+<p>There are other approaches to parsing, namely:</p>
+<ul>
+<li>Parser Generators
+</li>
+<li>Monadic parsing
+</li>
+<li>Parsers that split the input into tokens with a <em>lexer</em> and feed the token stream to te actual <em>parser</em>
+</li>
+</ul>
+<h2 id="further-resources" class="section-heading">
+  <a href="#further-resources" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Further Resources
+</h2>
+
+<p>The ExSpirit docs provide a good overview of the API, and document all the primitive parsers and parser combinators.
+The goal of this tutorial is to guide your hand over most of the features so that you know how to use the parsers in practice.</p>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-778c9ef903.js"></script>
+  
+  <script src="dist/ex_doc_makeup-js.js"></script>
+  
+  
+  </body>
+</html>
+
