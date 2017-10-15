@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.18.1">
-    <title>ExSpiritTutorial.Setup.ExampleTextParser – ex_spirit_tutorial v0.1.0</title>
+    <title>ExSpiritTutorial.PegGrammarParser – ex_spirit_tutorial v0.1.0</title>
     <link rel="stylesheet" href="dist/app-c922dbe7ef.css" />
     
     <script src="dist/sidebar_items-8d6e25e160.js"></script>
@@ -66,7 +66,7 @@
 
       <h1>
         <small class="visible-xs">ex_spirit_tutorial v0.1.0</small>
-        ExSpiritTutorial.Setup.ExampleTextParser
+        ExSpiritTutorial.PegGrammarParser
         
       </h1>
 
@@ -144,7 +144,19 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#example_grammar/0">example_grammar()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#expect/2">expect(context_ast, parser_ast)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#expression/1">expression(orig_context)</a>
   </div>
   
 </div>
@@ -156,7 +168,25 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#from_string/1">from_string(string)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#get_state_into/3">get_state_into(context_ast, key, parser_ast)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#group/1">group(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#identifier/1">identifier(orig_context)</a>
   </div>
   
 </div>
@@ -180,6 +210,12 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#literal/1">literal(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#lookahead/2">lookahead(context_ast, parser_ast)</a>
   </div>
   
@@ -193,6 +229,30 @@
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#no_skip/2">no_skip(context_ast, parser_ast)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#not_ordered_choice/1">not_ordered_choice(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#one_or_more/1">one_or_more(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#optional/1">optional(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#ordered_choice/1">ordered_choice(orig_context)</a>
   </div>
   
 </div>
@@ -234,6 +294,18 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#reference/1">reference(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#regex/1">regex(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#repeat/4">repeat(context_ast, parser_ast, minimum \\ 0, maximum \\ -1)</a>
   </div>
   
@@ -246,7 +318,25 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#rule/1">rule(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#rules/1">rules(orig_context)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#seq/2">seq(context_ast, list)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#sequence/1">sequence(orig_context)</a>
   </div>
   
 </div>
@@ -295,6 +385,12 @@
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#valid_context_matcher/0">valid_context_matcher()</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#zero_or_more/1">zero_or_more(orig_context)</a>
   </div>
   
 </div>
@@ -493,6 +589,23 @@
     
   </section>
 </div>
+<div class="detail" id="example_grammar/0">
+  
+  
+  <div class="detail-header">
+    <a href="#example_grammar/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">example_grammar()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
 <div class="detail" id="expect/2">
   
   
@@ -505,6 +618,23 @@
     
     
       <span class="note">(macro)</span>
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="expression/1">
+  
+  
+  <div class="detail-header">
+    <a href="#expression/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">expression(orig_context)</span>
+    
     
     
   </div>
@@ -531,6 +661,23 @@
     
   </section>
 </div>
+<div class="detail" id="from_string/1">
+  
+  
+  <div class="detail-header">
+    <a href="#from_string/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">from_string(string)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
 <div class="detail" id="get_state_into/3">
   
   
@@ -543,6 +690,40 @@
     
     
       <span class="note">(macro)</span>
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="group/1">
+  
+  
+  <div class="detail-header">
+    <a href="#group/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">group(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="identifier/1">
+  
+  
+  <div class="detail-header">
+    <a href="#identifier/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">identifier(orig_context)</span>
+    
     
     
   </div>
@@ -607,6 +788,23 @@
     
   </section>
 </div>
+<div class="detail" id="literal/1">
+  
+  
+  <div class="detail-header">
+    <a href="#literal/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">literal(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
 <div class="detail" id="lookahead/2">
   
   
@@ -657,6 +855,74 @@
     
     
       <span class="note">(macro)</span>
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="not_ordered_choice/1">
+  
+  
+  <div class="detail-header">
+    <a href="#not_ordered_choice/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">not_ordered_choice(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="one_or_more/1">
+  
+  
+  <div class="detail-header">
+    <a href="#one_or_more/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">one_or_more(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="optional/1">
+  
+  
+  <div class="detail-header">
+    <a href="#optional/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">optional(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="ordered_choice/1">
+  
+  
+  <div class="detail-header">
+    <a href="#ordered_choice/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">ordered_choice(orig_context)</span>
+    
     
     
   </div>
@@ -780,6 +1046,40 @@
     
   </section>
 </div>
+<div class="detail" id="reference/1">
+  
+  
+  <div class="detail-header">
+    <a href="#reference/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">reference(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="regex/1">
+  
+  
+  <div class="detail-header">
+    <a href="#regex/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">regex(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
 <div class="detail" id="repeat/4">
   
   
@@ -824,6 +1124,40 @@
     
   </section>
 </div>
+<div class="detail" id="rule/1">
+  
+  
+  <div class="detail-header">
+    <a href="#rule/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">rule(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="rules/1">
+  
+  
+  <div class="detail-header">
+    <a href="#rules/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">rules(orig_context)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
 <div class="detail" id="seq/2">
   
   
@@ -836,6 +1170,23 @@
     
     
       <span class="note">(macro)</span>
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="sequence/1">
+  
+  
+  <div class="detail-header">
+    <a href="#sequence/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">sequence(orig_context)</span>
+    
     
     
   </div>
@@ -990,6 +1341,23 @@
     
     
       <span class="note">(macro)</span>
+    
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="zero_or_more/1">
+  
+  
+  <div class="detail-header">
+    <a href="#zero_or_more/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">zero_or_more(orig_context)</span>
+    
     
     
   </div>

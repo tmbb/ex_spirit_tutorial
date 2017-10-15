@@ -6,7 +6,7 @@ fonts/icomoon.ttf
 fonts/icomoon.woff
 dist/ex_doc_makeup-css.css
 dist/ex_doc_makeup-js.js
-dist/sidebar_items-3a2c0b4952.js
+dist/sidebar_items-8d6e25e160.js
 api-reference.html
 introduction.html
 setup.html
@@ -14,6 +14,8 @@ peg-parsers.html
 search.html
 404.html
 ExSpiritTutorial.html
+ExSpiritTutorial.PegGrammarParser.html
+ExSpiritTutorial.PegParsers.PegGrammarCompiler.html
 ExSpiritTutorial.PegParsers.PegOperations.html
 ExSpiritTutorial.Setup.ExampleParser.html
 ExSpiritTutorial.Setup.ExampleTextParser.html
