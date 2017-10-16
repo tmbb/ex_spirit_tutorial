@@ -371,13 +371,162 @@ iex> parse("a", lookahead_not(e))
 
 ## Parser Composition *vs* `seq`
 
+TODO: explain the difference between `seq([p1, p2])` and `p1 |> p2`.
+
 ## Examples
 
 ### Example - A Calculator
 
+TODO
+
+#### Evaluator for arithmetic expressions
+
 ### Example - Parsing a String
 
+You might be tempted to use something like regular expressions to parse a string.
+However, parsing strings can be complex because of escaping rules and other complications.
+It's easy with ExSpirit, though.
+
+TODO
+
 ### Example - A Parser for PEG Grammars
+
+The parser is pretty simple (TODO: decompose into smaller chunks and explain them):
+
+```elixir
+defmodule ExSpiritTutorial.PegGrammarParser do
+  use ExSpirit.Parser, text: true
+end
+```
+
+The kinds of expressions we're interested in:
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "expression"
+
+We'll choose identifier naming rules to be the same as those for Elixir functions, except we're going to disallow `?` and `!` in the names, because that would conflict with the `?` and `!` operators of the PEG Grammar.
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "identifier"
+
+Now that we've defined how to parse an identifier, we can define what a reference is.
+A `reference` is just an identifier wrapped in a 2-tuple for easier processing.
+Why did we define a separate rule to parse the identifier then?
+Because it will come up useful later when we want to parse a rule name that is not a reference to a rule but the definition of a rule: the left side of `rule <- expr`.
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "reference"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "sequence"
+
+
+The sequence operator and the `ordered_choice` operator don't bind as tightly, so we never will recognize a sequence before the `*`, for example.
+Symbolically, `e1 e2 e3*` will be parsed as `e1 e2 (e3*)` and not as `(e1 e2 e3)*`.
+
+Naturally, we won't allow the following:
+
+  * `e+*`
+  * `!e*`
+  * etc.
+
+We want to recognize the following, and nothing else:
+
+  * `(...)*`
+  * `"..."*`
+  * `~r/.../*`
+  * `e*`
+
+Similar consideration will apply to the `?` and `+` operators.
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "zero_or_more"
+
+The `+` (one or more) operator is similar to the above:
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "one_or_more"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "group"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "not_ordered_choice"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "ordered_choice"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "literal"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "postprocess_literal"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "regex"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "postprocess_regex"
+
+Now that we can recognize all the operations we'll support, let's add the ability to parse grammar rules. Remember, a rule has the form:
+
+```plaintext
+identifier <- expression
+```
+
+Translating this to ExSpirit is straightforward. We'll represent rules by a 2-tuple `{name, expression}`.
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "rule"
+
+Now, let's finish the parser by teaching it how to recognize a valid string containing many rules.
+While in real life you might want to represent one rule per line, the syntax is not sensitive to whitespace, so we only need to keep trying to parse rules one after the other.
+When all rules have been parsed, only whitespace should remain.
+We'll detect this with the `eoi()` (end of input) parser:
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "rules"
+
+Finally, we'll hide all this complexity behind a nice API, so that users of our module don't need to deal with ExSpirit-specific details (like `parse()`, setting a skipper, etc.)
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "from_string"
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex", block: "example_grammar"
+
+Full parser
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_parser.ex"
+
+Let's just test out parser on the `example_rule` we've defined:
+
+```elixir
+iex> import ExSpiritTutorial.PegGrammarParser
+ExSpiritTutorial.PegGrammarParser
+iex> from_string(example_grammar).result
+[{"expr", {:reference, "sum"}},
+ {"sum",
+  {:sequence,
+   [reference: "product",
+    zero_or_more: {:sequence,
+     [ordered_choice: [literal: "+", literal: "-"], reference: "product"]}]}},
+ {"product",
+  {:sequence,
+   [reference: "value",
+    zero_or_more: {:sequence,
+     [ordered_choice: [literal: "*", literal: "/"], reference: "value"]}]}},
+ {"value",
+  {:ordered_choice,
+   [regex: ~r/^\d+/,
+    sequence: [literal: "(", reference: "expr", literal: ")"]]}}]
+```
+
+It looks like everything is working properly.
+
+Now we have parser that can parse the grammar rules into a better representation.
+But this is all still a little useless.
+We can't still do anything with this information.
+When we wrote the arithmetic calculator, we've built an evaluator for arithmetic expressions.
+That was an interpreter.
+It interpreted the parsing structure at runtime to perform some actions.
+We could build an interpreter for PEG Grammars too, but now that we've written an interpreter, let's do something else.
+Let's write a compiler.
+
+A compiler is a computer program that consumes a source representation and outputs a different source representation.
+The Elixir compiler, for example, consumes Elixir code and outputs Erlang code.
+The Erlang code is then *interpreted* by the BEAM.
+The C compiler, on the other hand, consumes C code and outputs machine instructions (or some other intermediate representation that is converted into machine instructions).
+
+We will write a compiler that compiles the PEG Grammer to ExSpirit rules.
+The output will be a number of ExSpirit rules (defined using `defrule`), which we can embed in a module.
+This will be more efficient than an interpreter, because we can take advantage of all the optimizations that ExSpirit can perform at compile time that will make our parsers faster.
+Actually, ExSpirit itself will be doing most of the hard work.
+
+$$ include "lib/ex_spirit_tutorial/peg_parsers/peg_grammar_compiler.ex"
 
 
 [`ExSpirit.Parser.Text.__using__/1`]: https://hexdocs.pm/ex_spirit/ExSpirit.Parser.Text.html#__using__/1

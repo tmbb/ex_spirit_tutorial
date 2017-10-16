@@ -31,7 +31,7 @@ You can think of context-sensitive languages as languages in which the parser ca
 
 Basically almost every programming language or file format that is sensitive to indentation is a context-sensitive language.
 Examples of context-sensitive languages are some programming languages (e.g. Haskell, Python), some template languages ([Pug][Pug] or [Slim][Slim], both of which have Elixir implementations), and some file formats, such as [XML][XML] and [YAML][XML].
-[HTML][HTML], while being based in XML, is in a league of its own, and HTML5, the latest iteration, [can't even be defined by a meaningful grammar][http://trevorjim.com/a-grammar-for-html5/].
+[HTML][HTML], while being based in XML, is in a league of its own, and HTML5, the latest iteration, [can't even be defined by a meaningful grammar](http://trevorjim.com/a-grammar-for-html5/).
 In this tutorial, we will write an XML parser.
 
 ## Alternative Approaches

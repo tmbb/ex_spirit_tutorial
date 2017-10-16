@@ -22,6 +22,14 @@ defmodule ExSpiritTutorial.Mixfile do
   defp docs do
     [
       markdown_processor: ExDocMakeup,
+      markdown_processor_options: [
+        lexer_options: %{
+          "elixir" => [
+            extra_declarations: [],
+            extra_def_like: ["defrule"]
+          ]
+        }
+      ],
       extras: [
         "tutorial/Introduction.md",
         "tutorial/Setup.md",
@@ -33,7 +41,8 @@ defmodule ExSpiritTutorial.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc_makeup, path: "../ex_doc_makeup"}
+      {:ex_doc_makeup, "~> 0.1.2"},
+      # {:ex_doc_makeup, path: "../ex_doc_makeup"}
     ]
   end
 end
