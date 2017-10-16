@@ -28,7 +28,7 @@ code.makeup {
 .makeup .gh {color: #000080; font-weight: bold; } /* Tok.generic_heading */
 .makeup .gi {color: #00A000; } /* Tok.generic_inserted */
 .makeup .go {color: #000000; font-style: italic; } /* Tok.generic_output */
-.makeup .gp {color: #a40000; } /* Tok.generic_prompt */
+.makeup .gp {color: #8f5902; } /* Tok.generic_prompt */
 .makeup .gr {color: #ef2929; } /* Tok.generic_error */
 .makeup .gs {color: #000000; font-weight: bold; } /* Tok.generic_strong */
 .makeup .gt {color: #a40000; font-weight: bold; } /* Tok.generic_traceback */
@@ -78,7 +78,7 @@ code.makeup {
 .makeup .sh {color: #4e9a06; } /* Tok.string_heredoc */
 .makeup .si {color: #5c35cc; } /* Tok.string_interpol */
 .makeup .sr {color: #cc0000; } /* Tok.string_regex */
-.makeup .ss {color: #8f5902; } /* Tok.string_symbol */
+.makeup .ss {color: #f57900; } /* Tok.string_symbol */
 .makeup .sx {color: #4e9a06; } /* Tok.string_other */
 .makeup .sx {color: #f56900; } /* Tok.string_sigil */
 .makeup .vc {color: #000000; } /* Tok.name_variable_class */
